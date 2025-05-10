@@ -1,3 +1,12 @@
+/**
+ * Calculator Project - The Odin Project Foundations Track
+ * Author: [Your Name]
+ * Description:
+ *   - Handles basic arithmetic operations (+, -, *, /)
+ *   - Supports chained operations, decimal rounding, backspace, and error handling
+ *   - Fully DOM-driven interface with internal state management
+ */
+
 console.log("Hello, world!");
 
 function add(a, b) {
@@ -12,7 +21,7 @@ function multiply(a, b) {
     return a * b;
 };
 
-function devide(a, b) {
+function divide(a, b) {
     if (b != 0) {
         return a / b;
     }
@@ -42,7 +51,7 @@ function operate(operator, a, b) {
         return multiply(a, b);
     };
     if (operator == "/") {
-        return devide(a, b);
+        return divide(a, b);
     };
 };
 
@@ -61,6 +70,7 @@ function display(btn) {
     let span = document.createElement("span");
     span.textContent = btn.textContent;
 
+    // Handle numeric and decimal input
     if (!isNaN(value) || value === ".") {
         if (calculated === false) {
             if (opr === "") {
@@ -95,10 +105,12 @@ function display(btn) {
         }
 
     }
-    if ((value === "+" || value === "-" || value === "*" || value === "/") && opr === "" && num2 == "") {
+    // Handle initial operator input
+    if ((value === "+" || value === "-" || value === "*" || value === "/") && opr === "" && num2 === "" && num1 !== "") {
         opr = value;
         dsp.appendChild(span);
     }
+    // Handle chained operations when num1, opr, and num2 are all present
     if ((value === "+" || value === "-" || value === "*" || value === "/") && num1 && num2 && opr) {
         let raw = operate(opr, num1, num2);
         if (raw === null) {
