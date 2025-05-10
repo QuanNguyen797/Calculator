@@ -100,12 +100,11 @@ function display(btn) {
         dsp.appendChild(span);
     }
     if ((value === "+" || value === "-" || value === "*" || value === "/") && num1 && num2 && opr) {
-        dsp.textContent = "";
         let raw = operate(opr, num1, num2);
         if (raw === null) {
             clean();
-            return
-        };
+            return;
+        }
         result = Math.round(raw * 10000) / 10000;
         dsp.textContent = "";
         apnd(result);
