@@ -70,6 +70,19 @@ function display(btn) {
     let span = document.createElement("span");
     span.textContent = btn.textContent;
 
+    // don’t allow multiple operators in a row
+    if ((value === "+" || value === "-" || value === "*" || value === "/") && opr !== "" && num2 === "") {
+        return;
+    }
+
+    // Allow chaining after equals by accepting operator input
+    if ((value === "+" || value === "-" || value === "*" || value === "/") && calculated && num1 && !num2) {
+        opr = value;
+        calculated = false;
+        dsp.appendChild(span);
+        return;
+    }
+
     // Handle numeric and decimal input
     if (!isNaN(value) || value === ".") {
         if (calculated === false) {
@@ -105,6 +118,7 @@ function display(btn) {
         }
 
     }
+
     // Handle initial operator input
     if ((value === "+" || value === "-" || value === "*" || value === "/") && opr === "" && num2 === "" && num1 !== "") {
         opr = value;
@@ -121,15 +135,24 @@ function display(btn) {
         dsp.textContent = "";
         apnd(result);
         num1 = result.toString();
+        calculated = false;
         num2 = "";
         opr = value;
         dsp.appendChild(span);
     }
+
+
+    const clickedElement = btn;
+    console.log(`num1=${num1},num2=${num2}, opr: ${opr}. Clicked element ${clickedElement.textContent}`)
 }
 
 
 let equal = document.querySelector(".equal");
 equal.addEventListener('click', () => {
+    if (calculated === true) {
+        return;
+    }
+    if (!num1 || !opr || !num2) return;
     let raw = operate(opr, num1, num2);
     if (raw === null) {
         clean();
@@ -142,8 +165,10 @@ equal.addEventListener('click', () => {
     num2 = "";
     opr = "";
     calculated = true;
+
+    console.log(`num1=${num1},num2=${num2}, opr: ${opr}. "=" pressed.`)
 })
-console.log(result);
+
 
 function apnd(content) {
     let span = document.createElement("span");
