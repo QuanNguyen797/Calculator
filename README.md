@@ -17,9 +17,18 @@ This project serves as a milestone in learning **JavaScript fundamentals** and *
 ├── script.js        # Core calculator logic and DOM interaction  
 └── README.md        # Project description and goals
 
-##  Features (Planned)
+##  Features
 - Basic operations: addition, subtraction, multiplication, division  
-- Clear and delete functionality  
-- Keyboard support  
-- Responsive layout  
-- Polished, user-friendly UI
+- Chained operations with immediate evaluation  
+- Decimal support with automatic rounding  
+- Backspace and clear functionality  
+- Full keyboard support for all inputs  
+- Responsive layout for desktop and mobile  
+- Polished, user-friendly UI with interactive button feedback
+
+##  Keyboard Shortcuts
+- Numbers and `.` → Input digits
+- `+`, `-`, `*`, `/` → Operators
+- `Enter` or `=` → Calculate
+- `Backspace` → Delete last input
+- `c` or spacebar → Clear all

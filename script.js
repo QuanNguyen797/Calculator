@@ -1,6 +1,6 @@
 /**
  * Calculator Project - The Odin Project Foundations Track
- * Author: [Your Name]
+ * Author: [Quan Nguyen]
  * Description:
  *   - Handles basic arithmetic operations (+, -, *, /)
  *   - Supports chained operations, decimal rounding, backspace, and error handling
@@ -57,14 +57,15 @@ function operate(operator, a, b) {
 
 let button = document.querySelectorAll(".digits>button, .operators>button");
 let dsp = document.querySelector(".display");
+let keys = document.querySelectorAll("button");
 
 button.forEach((btn) => {
     btn.addEventListener("click", () => {
-        display(btn);
+        handleInput(btn);
     });
 });
 
-function display(btn) {
+function handleInput(btn) {
     const value = btn.textContent;
 
     let span = document.createElement("span");
@@ -133,7 +134,7 @@ function display(btn) {
         }
         result = Math.round(raw * 10000) / 10000;
         dsp.textContent = "";
-        apnd(result);
+        appendToDisplay(result);
         num1 = result.toString();
         calculated = false;
         num2 = "";
@@ -148,7 +149,9 @@ function display(btn) {
 
 
 let equal = document.querySelector(".equal");
-equal.addEventListener('click', () => {
+equal.addEventListener('click', handleEquals);
+
+function handleEquals() {
     if (calculated === true) {
         return;
     }
@@ -160,17 +163,17 @@ equal.addEventListener('click', () => {
     }
     result = Math.round(raw * 10000) / 10000;
     dsp.textContent = "";
-    apnd(result);
+    appendToDisplay(result);
     num1 = result.toString();
     num2 = "";
     opr = "";
     calculated = true;
 
     console.log(`num1=${num1},num2=${num2}, opr: ${opr}. "=" pressed.`)
-})
+}
 
 
-function apnd(content) {
+function appendToDisplay(content) {
     let span = document.createElement("span");
     span.textContent = content;
     dsp.appendChild(span);
@@ -187,8 +190,10 @@ function clean() {
 const clear = document.querySelector(".clear");
 clear.addEventListener('click', clean);
 
-const bkspc = document.querySelector(".bkspc");
-bkspc.addEventListener('click', () => {
+const backspaceButton = document.querySelector(".bkspc");
+backspaceButton.addEventListener('click', handleBackspace);
+
+function handleBackspace() {
     if (dsp.lastChild) {
         dsp.removeChild(dsp.lastChild);
     }
@@ -201,4 +206,25 @@ bkspc.addEventListener('click', () => {
     else if (opr == "" && num1) {
         num1 = num1.toString().slice(0, -1);
     }
-})
+}
+
+document.addEventListener(
+    'keydown', (event) => {
+        const key = event.key;
+        console.log(key);
+        if ("0123456789+-*/.".includes(key)) {
+            const newbtn = document.createElement("button");
+            newbtn.textContent = key;
+            handleInput(newbtn);
+        }
+        else if (key === "Backspace") {
+            handleBackspace();
+        }
+        else if (key === "c" || key === " ") {
+            clean();
+        }
+        else if (key === "="|| key==="Enter") {
+            handleEquals();
+        }
+    }
+)
