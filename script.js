@@ -220,7 +220,7 @@ document.addEventListener(
         else if (key === "Backspace") {
             handleBackspace();
         }
-        else if (key === "c" || key === " ") {
+        else if (key === "c" || key === " " || key==="Escape") {
             clean();
         }
         else if (key === "="|| key==="Enter") {
