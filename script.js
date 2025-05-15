@@ -76,10 +76,11 @@ function handleInput(btn) {
         return;
     }
 
-    // Allow chaining after equals by accepting operator input
+    // allow chaining after equals by accepting operator input
     if ((value === "+" || value === "-" || value === "*" || value === "/") && calculated && num1 && !num2) {
         opr = value;
         calculated = false;
+        dsp.textContent = "";
         dsp.appendChild(span);
         return;
     }
@@ -92,6 +93,10 @@ function handleInput(btn) {
                     return;
                 }
                 else {
+                    //limit number input to 11 digits, prevent display overflow.
+                    if (dsp.textContent.replace(/\s+/g, '').length >= 11) {
+                        return;
+                    }
                     num1 += value;
                     dsp.appendChild(span);
                 }
@@ -102,6 +107,10 @@ function handleInput(btn) {
                     return;
                 }
                 else {
+                    if (dsp.textContent.replace(/\s+/g, '').length >= 11) {
+                        return;
+                    }
+                    if (num2 === "") dsp.textContent = "";
                     num2 += value;
                     dsp.appendChild(span);
                 }
@@ -123,6 +132,7 @@ function handleInput(btn) {
     // Handle initial operator input
     if ((value === "+" || value === "-" || value === "*" || value === "/") && opr === "" && num2 === "" && num1 !== "") {
         opr = value;
+        dsp.textContent = "";
         dsp.appendChild(span);
     }
     // Handle chained operations when num1, opr, and num2 are all present
@@ -139,6 +149,7 @@ function handleInput(btn) {
         calculated = false;
         num2 = "";
         opr = value;
+        dsp.textContent = "";
         dsp.appendChild(span);
     }
 
@@ -176,6 +187,12 @@ function handleEquals() {
 function appendToDisplay(content) {
     let span = document.createElement("span");
     span.textContent = content;
+    //reduces the font size for long calculation results
+    if (content.toString().length > 10) {
+        span.style.fontSize = "50px";
+    } else {
+        span.style.fontSize = "70px";
+    }
     dsp.appendChild(span);
 }
 
@@ -220,10 +237,10 @@ document.addEventListener(
         else if (key === "Backspace") {
             handleBackspace();
         }
-        else if (key === "c" || key === " " || key==="Escape") {
+        else if (key === "c" || key === " " || key === "Escape") {
             clean();
         }
-        else if (key === "="|| key==="Enter") {
+        else if (key === "=" || key === "Enter") {
             handleEquals();
         }
     }

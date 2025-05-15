@@ -1,6 +1,6 @@
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: grey;
+    background-color: rgb(98, 97, 97);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,38 +16,87 @@ h1{
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    border: solid white 1px;
+    border: solid black 1px;
     width: 525px;
     height: 700px;
     margin: auto 0;
+    padding: 35px;
     box-sizing: border-box;
+    background-color: rgb(240, 239, 234);
+    border-radius: 40px;
+    padding-right: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
 .display{
+    box-sizing: border-box;
     border: solid black 1px;
     min-height: 50px;
-    min-width: 80%;
-    background-color: #F5F5F5;
-    height: 150px
+    background-color: rgb(45, 46, 49);
+    height: 150px;
+    border-radius: 30px;
+    max-width: 430px;
+    margin-left: 10px;
+    font-size: 70px;
+    color:aliceblue;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
 }
 
 .digits{
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    max-width: 280px;
+    column-gap: 15px;
+    row-gap: 10px;
+    max-width: 400px;
+    margin-top: 15px;
+    padding-left: 30px
 }
 
 .display, .buttons{
     flex: 0 0 100%;
 }
 
-button{
+button {
     box-sizing: content-box;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     font-size: 50px;
+    border-radius: 20%;
+    border: none;
+    background-color: #d3d1c9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
+.zero{
+    width: 188px;
+    border-radius: 20px;
+}
+.plus{
+    height: 180px;
+    border-radius: 20px;
+}
+
+.digits>button{
+    background-color: #d3d1c9;
+}
+
+.operators>button{
+    background-color: rgb(255, 123, 0);
+}
+
+.clear{
+    background-color: rgb(255, 123, 0);
+}
+
+.bkspc, .equal{
+    background-color: grey;
 }
 
 .buttons{
@@ -58,10 +107,15 @@ button{
 .others{
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 15px;
 }
 
 .operators{
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+
+.operators, .others{
+    color: aliceblue;
 }
