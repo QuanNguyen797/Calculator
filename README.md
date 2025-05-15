@@ -31,4 +31,4 @@ This project serves as a milestone in learning **JavaScript fundamentals** and *
 - `+`, `-`, `*`, `/` → Operators
 - `Enter` or `=` → Calculate
 - `Backspace` → Delete last input
-- `c` or spacebar → Clear all
+- `c` or spacebar or `Escape` → Clear all
