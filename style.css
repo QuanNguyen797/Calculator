@@ -1,5 +1,5 @@
 body{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(98, 97, 97);
     display: flex;
     flex-direction: column;
@@ -17,14 +17,14 @@ h1{
     justify-content: center;
     gap: 20px;
     border: solid black 1px;
-    width: 525px;
+    width: 500px;
     height: 700px;
     margin: auto 0;
-    padding: 35px;
+    padding: 30px;
     box-sizing: border-box;
     background-color: rgb(240, 239, 234);
     border-radius: 40px;
-    padding-right: 40px;
+    padding-right: 35px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
@@ -52,7 +52,7 @@ h1{
     row-gap: 10px;
     max-width: 400px;
     margin-top: 15px;
-    padding-left: 30px
+    padding-left: 20px
 }
 
 .display, .buttons{
@@ -65,7 +65,7 @@ button {
     height: 80px;
     font-size: 50px;
     border-radius: 20%;
-    border: none;
+    border: 0.5px solid black;
     background-color: #d3d1c9;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -75,16 +75,17 @@ button:active {
     transform: translateY(2px);
 }
 .zero{
-    width: 188px;
+    width: 190px;
     border-radius: 20px;
 }
 .plus{
-    height: 180px;
+    height: 175px;
     border-radius: 20px;
 }
 
 .digits>button{
     background-color: #d3d1c9;
+    font-weight: bold;
 }
 
 .operators>button{
@@ -108,14 +109,17 @@ button:active {
     display: flex;
     justify-content: center;
     gap: 15px;
+    padding-left: 8px;
 }
 
 .operators{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 11.5px;
+    
 }
 
-.operators, .others{
+.operators>button, .others>button{
     color: aliceblue;
+    font-weight: bold;
 }
